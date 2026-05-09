@@ -1,17 +1,17 @@
 import { FloatingSidebar } from "@/components/sidebar";
-import { DashboardShell } from "@/components/dashboard-shell";
+import { SettingsView } from "@/components/settings-view";
 
 export const metadata = {
-  title: "Dashboard — Sales Performance",
+  title: "Configurações — Sales Dashboard",
 };
 
-export default function DashboardPage() {
+export default function SettingsPage() {
   return (
     <div className="min-h-screen">
       <FloatingSidebar />
       <div className="pl-[80px]">
-        <main className="max-w-[1280px] px-6 py-8">
-          <DashboardShell />
+        <main className="max-w-[640px] px-6 py-8">
+          <SettingsView />
         </main>
       </div>
     </div>

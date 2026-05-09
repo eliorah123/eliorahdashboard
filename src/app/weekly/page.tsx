@@ -1,17 +1,17 @@
 import { FloatingSidebar } from "@/components/sidebar";
-import { DashboardShell } from "@/components/dashboard-shell";
+import { WeeklyView } from "@/components/weekly-view";
 
 export const metadata = {
-  title: "Dashboard — Sales Performance",
+  title: "Semanal — Sales Dashboard",
 };
 
-export default function DashboardPage() {
+export default function WeeklyPage() {
   return (
     <div className="min-h-screen">
       <FloatingSidebar />
       <div className="pl-[80px]">
-        <main className="max-w-[1280px] px-6 py-8">
-          <DashboardShell />
+        <main className="max-w-[1100px] px-6 py-8">
+          <WeeklyView />
         </main>
       </div>
     </div>
