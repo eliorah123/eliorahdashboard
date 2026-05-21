@@ -32,8 +32,8 @@ function formatK(value: number): string {
 
 // ─── Custom tooltip ────────────────────────────────────────────────────────────
 
-const LIGHT_COLOR = "#5a8977";
-const DARK_COLOR  = "#7bceae";
+const LIGHT_COLOR = "#1a9e62";
+const DARK_COLOR  = "#4adda8";
 
 function CustomTooltip({ active, payload, label, chartColor }: TooltipContentProps & { chartColor: string }) {
   if (!active || !payload?.length) return null;
@@ -124,7 +124,7 @@ export function RevenueChart({ data }: RevenueChartProps) {
   return (
     <div
       className="bg-white rounded-2xl border border-gray-100/80 p-5 flex flex-col gap-4"
-      style={{ boxShadow: "0 1px 3px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.04)" }}
+      style={{ boxShadow: "0 2px 8px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.05)" }}
     >
       <div className="flex items-start justify-between flex-wrap gap-3">
         <div>

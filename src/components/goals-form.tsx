@@ -307,7 +307,7 @@ export function GoalsForm({ embedded = false }: { embedded?: boolean }) {
       {/* Form card */}
       <div
         className="bg-white rounded-2xl border border-gray-100/80 p-6"
-        style={{ boxShadow: "0 1px 3px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.04)" }}
+        style={{ boxShadow: "0 2px 8px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.05)" }}
       >
         <div className="flex items-center gap-2 mb-5">
           <div className="w-7 h-7 rounded-lg bg-green-50 flex items-center justify-center">
@@ -392,7 +392,7 @@ export function GoalsForm({ embedded = false }: { embedded?: boolean }) {
       {hasProgress && (
         <div
           className="mt-5 bg-white rounded-2xl border border-gray-100/80 p-5"
-          style={{ boxShadow: "0 1px 3px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.04)" }}
+          style={{ boxShadow: "0 2px 8px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.05)" }}
         >
           <div className="flex items-center justify-between mb-5 flex-wrap gap-3">
             <div>

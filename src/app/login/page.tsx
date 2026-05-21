@@ -33,7 +33,7 @@ export default function LoginPage() {
       className="min-h-screen flex items-center justify-center px-5"
       style={{
         background:
-          "radial-gradient(ellipse 80% 50% at 50% -10%, rgba(134,197,150,0.10) 0%, transparent 65%), #f3f6f3",
+          "radial-gradient(ellipse 80% 50% at 50% -10%, rgba(26,158,98,0.12) 0%, transparent 65%), oklch(0.964 0.018 150)",
       }}
     >
       <div className="w-full max-w-[380px]">
@@ -43,8 +43,8 @@ export default function LoginPage() {
           <div
             className="inline-flex items-center justify-center w-11 h-11 rounded-2xl mb-4"
             style={{
-              background: "linear-gradient(135deg, #1a3228 0%, #2d5a3d 100%)",
-              boxShadow: "0 2px 8px rgba(26,50,40,0.20), 0 1px 2px rgba(26,50,40,0.12)",
+              background: "linear-gradient(135deg, #0d3a26 0%, #1a9e62 100%)",
+              boxShadow: "0 2px 8px rgba(26,158,98,0.30), 0 1px 2px rgba(13,58,38,0.12)",
             }}
           >
             <span className="text-white font-bold text-[15px] tracking-tight">E</span>
@@ -139,7 +139,7 @@ export default function LoginPage() {
                     ? "border-[#1a3228]"
                     : "bg-white border-gray-300 hover:border-gray-400",
                 )}
-                style={remember ? { background: "#1a3228", borderColor: "#1a3228" } : {}}
+                style={remember ? { background: "#1a9e62", borderColor: "#1a9e62" } : {}}
               >
                 {remember && (
                   <svg width="10" height="8" viewBox="0 0 10 8" fill="none">
@@ -180,11 +180,11 @@ export default function LoginPage() {
                   : "active:scale-[0.99]",
               )}
               style={{
-                background: submitting ? "#1a3228" : "#1a3228",
+                background: "linear-gradient(135deg, #0d3a26 0%, #1a9e62 100%)",
                 color: "white",
               }}
-              onMouseEnter={(e) => { if (!submitting) e.currentTarget.style.background = "#213d30"; }}
-              onMouseLeave={(e) => { e.currentTarget.style.background = "#1a3228"; }}
+              onMouseEnter={(e) => { if (!submitting) e.currentTarget.style.background = "linear-gradient(135deg, #0b2e1f 0%, #158050 100%)"; }}
+              onMouseLeave={(e) => { e.currentTarget.style.background = "linear-gradient(135deg, #0d3a26 0%, #1a9e62 100%)"; }}
             >
               {submitting ? (
                 <>

@@ -180,7 +180,7 @@ function SummaryCard({
 }) {
   return (
     <div className="bg-white rounded-2xl border border-gray-100/80 px-4 py-4"
-      style={{ boxShadow: "0 1px 3px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.04)" }}
+      style={{ boxShadow: "0 2px 8px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.05)" }}
     >
       <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-2">{label}</p>
       <p className="text-xl font-bold text-gray-900 leading-none">{value}</p>
@@ -345,7 +345,7 @@ export function WeeklyView() {
           {/* Bar chart */}
           <div
             className="bg-white rounded-2xl border border-gray-100/80 p-5"
-            style={{ boxShadow: "0 1px 3px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.04)" }}
+            style={{ boxShadow: "0 2px 8px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.05)" }}
           >
             <div className="flex items-start justify-between mb-4 flex-wrap gap-3">
               <div>
@@ -399,7 +399,7 @@ export function WeeklyView() {
           {/* Week-by-week table */}
           <div
             className="bg-white rounded-2xl border border-gray-100/80 overflow-hidden"
-            style={{ boxShadow: "0 1px 3px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.04)" }}
+            style={{ boxShadow: "0 2px 8px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.05)" }}
           >
             <div className="px-5 py-4 border-b border-gray-50">
               <p className="text-sm font-semibold text-gray-900">Detalhamento por Semana</p>

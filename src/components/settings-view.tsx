@@ -130,7 +130,7 @@ function SectionCard({ children }: { children: React.ReactNode }) {
   return (
     <div
       className="bg-white rounded-2xl border border-gray-100/80 overflow-hidden"
-      style={{ boxShadow: "0 1px 3px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.04)" }}
+      style={{ boxShadow: "0 2px 8px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.05)" }}
     >
       {children}
     </div>

@@ -3,17 +3,18 @@
 @import "shadcn/tailwind.css";
 
 @theme {
-  --color-green-50:  #f0f5f3;
-  --color-green-100: #d4e6e0;
-  --color-green-200: #a9ccbf;
-  --color-green-300: #7db39f;
-  --color-green-400: #6c9e8b;
-  --color-green-500: #5a8977;
-  --color-green-600: #4a7162;
-  --color-green-700: #3a5a4e;
-  --color-green-800: #2a4239;
-  --color-green-900: #1a2b24;
-  --color-green-950: #0d1612;
+  /* ─── Paleta verde vibrante (estilo painel de saúde) ──────────────────────── */
+  --color-green-50:  #edfbf3;
+  --color-green-100: #ccf4de;
+  --color-green-200: #99e8c0;
+  --color-green-300: #57d49c;
+  --color-green-400: #28bb78;
+  --color-green-500: #1a9e62;
+  --color-green-600: #158050;
+  --color-green-700: #136642;
+  --color-green-800: #115034;
+  --color-green-900: #0d3a26;
+  --color-green-950: #072016;
 }
 
 @custom-variant dark (&:is(.dark *));
@@ -63,38 +64,39 @@
 }
 
 :root {
-  --background: oklch(0.984 0.003 247);
-  --foreground: oklch(0.145 0 0);
+  /* Fundo mint claro, como na referência */
+  --background: oklch(0.964 0.018 150);
+  --foreground: oklch(0.160 0.030 152);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
+  --card-foreground: oklch(0.160 0.030 152);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.160 0.030 152);
+  --primary: oklch(0.520 0.160 152);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.946 0.030 150);
+  --secondary-foreground: oklch(0.160 0.030 152);
+  --muted: oklch(0.946 0.030 150);
+  --muted-foreground: oklch(0.520 0.015 152);
+  --accent: oklch(0.910 0.055 150);
+  --accent-foreground: oklch(0.520 0.160 152);
   --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.527 0.154 150);
-  --chart-2: oklch(0.623 0.194 145);
-  --chart-3: oklch(0.708 0.137 150);
+  --border: oklch(0.908 0.028 150);
+  --input: oklch(0.908 0.028 150);
+  --ring: oklch(0.520 0.160 152);
+  --chart-1: oklch(0.520 0.160 152);
+  --chart-2: oklch(0.620 0.170 152);
+  --chart-3: oklch(0.720 0.130 152);
   --chart-4: oklch(0.556 0.137 247);
   --chart-5: oklch(0.439 0 0);
-  --radius: 0.75rem;
+  --radius: 0.875rem;
   --sidebar: oklch(1 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.527 0.154 150);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.952 0.05 145);
-  --sidebar-accent-foreground: oklch(0.527 0.154 150);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  --sidebar-foreground: oklch(0.160 0.030 152);
+  --sidebar-primary: oklch(0.520 0.160 152);
+  --sidebar-primary-foreground: oklch(1 0 0);
+  --sidebar-accent: oklch(0.910 0.055 150);
+  --sidebar-accent-foreground: oklch(0.520 0.160 152);
+  --sidebar-border: oklch(0.908 0.028 150);
+  --sidebar-ring: oklch(0.520 0.160 152);
   --font-sans: var(--font-geist-sans);
 }
 
@@ -104,44 +106,37 @@
   }
   body {
     @apply text-foreground;
-    background-image: url('/bg-glass.png?v=2');
-    background-size: cover;
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-color: oklch(0.984 0.003 247);
+    background-color: oklch(0.964 0.018 150);
   }
   html {
     @apply font-sans;
   }
 }
 
-/* ─── Ambient top glow ──────────────────────────────────────────────────────── */
+/* ─── Ambient glow (verde suave no topo) ────────────────────────────────────── */
 
 body::before {
   content: '';
   position: fixed;
-  top: -120px;
+  top: -100px;
   left: 50%;
   transform: translateX(-50%);
-  width: 80%;
-  max-width: 960px;
-  height: 520px;
-  background: radial-gradient(ellipse at 50% 0%, rgba(90,137,119,0.13) 0%, transparent 68%);
-  filter: blur(48px);
+  width: 70%;
+  max-width: 800px;
+  height: 400px;
+  background: radial-gradient(ellipse at 50% 0%, rgba(26,158,98,0.08) 0%, transparent 70%);
+  filter: blur(56px);
   pointer-events: none;
   z-index: 0;
 }
 
 html.dark body::before {
-  background: radial-gradient(ellipse at 50% 0%, rgba(148,163,184,0.03) 0%, transparent 72%);
+  background: radial-gradient(ellipse at 50% 0%, rgba(74,222,128,0.04) 0%, transparent 72%);
 }
 
-/* ─── Dark mode — premium neutral palette ───────────────────────────────────── */
-/* Two-class specificity (0-2-0) beats Tailwind utilities (0-1-0) */
+/* ─── Dark mode ─────────────────────────────────────────────────────────────── */
 
 html.dark body {
-  background-image: none;
   background-color: #0F1115;
 }
 
@@ -178,7 +173,7 @@ html.dark body {
 .dark .hover\:text-gray-700:hover { color: #94A3B8; }
 .dark .hover\:text-gray-600:hover { color: #64748B; }
 
-/* ── Positive (green) — accent only ── */
+/* ── Positive (green) ── */
 .dark .text-green-600,
 .dark .text-green-700,
 .dark .text-green-800   { color: #4ADE80; }
@@ -190,7 +185,7 @@ html.dark body {
 .dark .focus-within\:border-green-200:focus-within { border-color: rgba(74,222,128,0.30); }
 .dark .focus\:border-green-200:focus               { border-color: rgba(74,222,128,0.30); }
 
-/* ── Negative (red) — accent only ── */
+/* ── Negative (red) ── */
 .dark .text-red-400,
 .dark .text-red-500,
 .dark .text-red-600,
@@ -200,7 +195,7 @@ html.dark body {
 .dark .bg-red-200       { background-color: rgba(251,113,133,0.13); }
 .dark .border-red-100   { border-color: rgba(251,113,133,0.16); }
 
-/* ── Warning (amber) — accent only ── */
+/* ── Warning (amber) ── */
 .dark .text-amber-700,
 .dark .text-amber-800   { color: #FCD34D; }
 .dark .bg-amber-100,
@@ -224,7 +219,7 @@ html.dark body {
 .dark input::placeholder,
 .dark textarea::placeholder { color: rgba(255,255,255,0.28); }
 
-/* ── Recharts — subtle grid + axis text in dark ── */
+/* ── Recharts ── */
 .dark .recharts-cartesian-grid-horizontal line,
 .dark .recharts-cartesian-grid-vertical   line { stroke: rgba(255,255,255,0.05); }
 .dark .recharts-text                           { fill:   rgba(255,255,255,0.30); }

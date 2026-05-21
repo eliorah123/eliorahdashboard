@@ -142,7 +142,7 @@ export function SellerRanking() {
   return (
     <div
       className="bg-white rounded-2xl border border-gray-100/80 flex flex-col h-full"
-      style={{ boxShadow: "0 1px 3px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.04)" }}
+      style={{ boxShadow: "0 2px 8px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.05)" }}
     >
       <div className="px-5 pt-5 pb-4 border-b border-gray-50">
         <p className="text-sm font-semibold text-gray-900">Ranking de Vendedores</p>

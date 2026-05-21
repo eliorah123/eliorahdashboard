@@ -8,6 +8,7 @@ interface KPICardProps {
   prefix?: string;
   suffix?: string;
   description?: string;
+  invertSentiment?: boolean;
 }
 
 export function KPICard({
@@ -17,17 +18,18 @@ export function KPICard({
   prefix,
   suffix,
   description,
+  invertSentiment = false,
 }: KPICardProps) {
-  const isPositive = trend > 0;
-  const isNegative = trend < 0;
+  const isPositive = invertSentiment ? trend < 0 : trend > 0;
+  const isNegative = invertSentiment ? trend > 0 : trend < 0;
   const TrendIcon = isPositive ? TrendingUp : isNegative ? TrendingDown : Minus;
 
   return (
     <div
       className="bg-white rounded-2xl p-5 border border-gray-100/80 flex flex-col gap-3"
-      style={{ boxShadow: "0 1px 3px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.04)" }}
+      style={{ boxShadow: "0 2px 8px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.05)" }}
     >
-      <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest">
+      <p className="text-[11px] font-semibold text-gray-400 uppercase tracking-widest">
         {label}
       </p>
 
@@ -50,7 +52,7 @@ export function KPICard({
       <div className="flex items-center justify-between">
         <div
           className={cn(
-            "inline-flex items-center gap-1 text-xs font-semibold rounded-full px-2 py-0.5",
+            "inline-flex items-center gap-1 text-xs font-semibold rounded-full px-2.5 py-1",
             isPositive && "bg-green-50 text-green-700",
             isNegative && "bg-red-50 text-red-500",
             !isPositive && !isNegative && "bg-gray-100 text-gray-500"

@@ -67,7 +67,7 @@ interface InsightItem {
 
 const SHORT_MONTHS = ["Jan","Fev","Mar","Abr","Mai","Jun","Jul","Ago","Set","Out","Nov","Dez"];
 const WEEKDAYS     = ["Seg","Ter","Qua","Qui","Sex","Sáb","Dom"];
-const CHART_COLOR  = "#5a8977";
+const CHART_COLOR  = "#1a9e62";
 
 // ─── Helpers ───────────────────────────────────────────────────────────────────
 
@@ -233,7 +233,7 @@ function KpiGroup({ title, accent, children }: { title: string; accent: string; 
   return (
     <div
       className="bg-white rounded-2xl border border-gray-100/80 p-5"
-      style={{ boxShadow: "0 1px 3px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.04)" }}
+      style={{ boxShadow: "0 2px 8px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.05)" }}
     >
       <div className="flex items-center gap-2 mb-4">
         <div className={cn("w-0.5 h-4 rounded-full", accent)} />
@@ -317,7 +317,7 @@ function HeatmapCalendar({ entries }: { entries: DailyEntry[] }) {
   return (
     <div
       className="bg-white rounded-2xl border border-gray-100/80 p-5"
-      style={{ boxShadow: "0 1px 3px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.04)" }}
+      style={{ boxShadow: "0 2px 8px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.05)" }}
     >
       <div className="flex items-center justify-between mb-4">
         <div>
@@ -405,7 +405,7 @@ function SellerRankingList({ rows }: { rows: SellerRow[] }) {
                   className="h-full rounded-full"
                   style={{
                     width: `${Math.min(s.share, 100)}%`,
-                    background: i === 0 ? `linear-gradient(90deg,${CHART_COLOR},#62b898)` : "#CBD5E1",
+                    background: i === 0 ? `linear-gradient(90deg,${CHART_COLOR},#57d49c)` : "#CBD5E1",
                   }}
                 />
               </div>
@@ -633,7 +633,7 @@ export function SalesOverview() {
       {/* Main chart */}
       <div
         className="bg-white rounded-2xl border border-gray-100/80 p-5 mb-5"
-        style={{ boxShadow: "0 1px 3px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.04)" }}
+        style={{ boxShadow: "0 2px 8px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.05)" }}
       >
         {/* Header */}
         <div className="flex items-start justify-between gap-4 mb-4">
@@ -759,7 +759,7 @@ export function SalesOverview() {
         <HeatmapCalendar entries={entries} />
         <div
           className="bg-white rounded-2xl border border-gray-100/80 p-5"
-          style={{ boxShadow: "0 1px 3px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.04)" }}
+          style={{ boxShadow: "0 2px 8px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.05)" }}
         >
           <div className="mb-4">
             <p className="text-sm font-semibold text-gray-900">Ranking de Vendedores</p>

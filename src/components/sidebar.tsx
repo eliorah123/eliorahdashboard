@@ -11,12 +11,8 @@ import {
   Moon,
   Sun,
   LogOut,
+  Target,
 } from "lucide-react";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
 import { settingsStorage } from "@/lib/storage";
 import { useTheme } from "@/hooks/use-theme";
@@ -37,6 +33,12 @@ const ALL_NAV_ITEMS = [
     label: "Vendas",
     href:  "/sales",
     roles: new Set<UserRole>(["admin", "gestor", "vendedor"]),
+  },
+  {
+    icon:  Target,
+    label: "Tráfego Pago",
+    href:  "/traffic",
+    roles: new Set<UserRole>(["admin", "gestor"]),
   },
   {
     icon:  Users,
@@ -62,6 +64,12 @@ function userInitials(name: string): string {
   return name.split(" ").filter(Boolean).slice(0, 2).map((w) => w[0].toUpperCase()).join("");
 }
 
+const ROLE_LABELS: Record<string, string> = {
+  admin:    "Administrador",
+  gestor:   "Gestor",
+  vendedor: "Vendedor",
+};
+
 const ROLE_COLORS: Record<string, string> = {
   admin:    "bg-purple-100 text-purple-700",
   gestor:   "bg-blue-100 text-blue-700",
@@ -74,10 +82,10 @@ export function FloatingSidebar() {
   const pathname           = usePathname();
   const { isDark, toggle } = useTheme();
   const { user, signOut }  = useAuth();
-  const [initials, setInitials] = useState("SP");
+  const [teamName, setTeamName] = useState("Sales Pro");
 
   useEffect(() => {
-    const load = () => setInitials(teamInitials(settingsStorage.get().teamName));
+    const load = () => setTeamName(settingsStorage.get().teamName || "Sales Pro");
     load();
     window.addEventListener("storage", load);
     return () => window.removeEventListener("storage", load);
@@ -87,119 +95,115 @@ export function FloatingSidebar() {
     (item) => !user || item.roles.has(user.role),
   );
 
-  const uInitials  = user ? userInitials(user.name) : "–";
-  const roleColor  = user ? (ROLE_COLORS[user.role] ?? ROLE_COLORS.vendedor) : ROLE_COLORS.vendedor;
+  const uInitials = user ? userInitials(user.name) : "–";
+  const roleColor = user ? (ROLE_COLORS[user.role] ?? ROLE_COLORS.vendedor) : ROLE_COLORS.vendedor;
+  const roleLabel = user ? (ROLE_LABELS[user.role] ?? user.role) : "";
 
   return (
-    <div className="fixed left-4 top-1/2 -translate-y-1/2 z-50">
-      <nav
-        className="flex flex-col items-center gap-1 rounded-2xl py-3 px-2"
-        style={{
-          background: isDark ? "rgba(22,26,34,0.92)" : "rgba(255,255,255,0.78)",
-          backdropFilter: "blur(20px) saturate(1.6)",
-          WebkitBackdropFilter: "blur(20px) saturate(1.6)",
-          boxShadow: isDark
-            ? "0 2px 8px rgba(0,0,0,0.32), 0 12px 32px rgba(0,0,0,0.20), inset 0 0 0 1px rgba(255,255,255,0.06)"
-            : "0 2px 8px rgba(0,0,0,0.06), 0 12px 32px rgba(0,0,0,0.08), inset 0 0 0 1px rgba(255,255,255,0.72)",
-        }}
-      >
-        {/* Team logo */}
-        <div className="mb-2 w-9 h-9 rounded-xl bg-green-500 flex items-center justify-center">
-          <span className="text-white text-xs font-bold tracking-tight">{initials}</span>
+    <aside
+      className="fixed left-0 top-0 h-screen w-[220px] z-50 flex flex-col"
+      style={{
+        background: isDark ? "#161A22" : "#ffffff",
+        borderRight: isDark
+          ? "1px solid rgba(255,255,255,0.06)"
+          : "1px solid rgba(0,0,0,0.06)",
+        boxShadow: isDark
+          ? "2px 0 16px rgba(0,0,0,0.18)"
+          : "2px 0 20px rgba(0,0,0,0.05)",
+      }}
+    >
+      {/* ── Logo / Team header ─────────────────────────────────────────────── */}
+      <div className="px-5 py-5 flex items-center gap-3 flex-shrink-0">
+        <div
+          className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0"
+          style={{
+            background: "linear-gradient(135deg, #0d3a26 0%, #1a9e62 100%)",
+            boxShadow: "0 2px 8px rgba(26,158,98,0.30)",
+          }}
+        >
+          <span className="text-white text-xs font-bold tracking-tight">
+            {teamInitials(teamName)}
+          </span>
         </div>
+        <div className="min-w-0">
+          <p className="text-sm font-bold text-gray-900 truncate leading-tight">
+            {teamName}
+          </p>
+          <p className="text-[10px] text-gray-400 leading-tight mt-0.5">Plataforma de Vendas</p>
+        </div>
+      </div>
 
-        <div className="w-5 h-px bg-gray-100 my-1" />
+      {/* ── Divider ────────────────────────────────────────────────────────── */}
+      <div className="mx-4 h-px bg-gray-100 flex-shrink-0" />
 
-        {/* Nav items (filtered by role) */}
+      {/* ── Navigation ─────────────────────────────────────────────────────── */}
+      <nav className="flex-1 px-3 py-3 flex flex-col gap-0.5 overflow-y-auto">
         {visibleNav.map(({ icon: Icon, label, href }) => {
           const isActive = href === "/" ? pathname === "/" : pathname.startsWith(href);
           return (
-            <Tooltip key={href}>
-              <TooltipTrigger
-                render={
-                  <Link
-                    href={href}
-                    className={cn(
-                      "flex items-center justify-center w-10 h-10 rounded-xl transition-all duration-150",
-                      isActive
-                        ? "bg-green-50 text-green-700"
-                        : "text-gray-400 hover:bg-gray-50 hover:text-gray-600",
-                    )}
-                  />
-                }
-              >
-                <Icon size={18} strokeWidth={isActive ? 2.5 : 1.8} />
-              </TooltipTrigger>
-              <TooltipContent side="right" sideOffset={10}>
-                {label}
-              </TooltipContent>
-            </Tooltip>
+            <Link
+              key={href}
+              href={href}
+              className={cn(
+                "flex items-center gap-3 h-10 px-3 rounded-xl text-sm font-medium transition-all duration-150",
+                isActive
+                  ? "text-white"
+                  : "text-gray-500 hover:bg-gray-50 hover:text-gray-700",
+              )}
+              style={isActive ? {
+                background: "linear-gradient(135deg, #0d3a26 0%, #1a9e62 100%)",
+                boxShadow: "0 2px 10px rgba(26,158,98,0.28)",
+              } : {}}
+            >
+              <Icon size={17} strokeWidth={isActive ? 2.5 : 1.8} />
+              <span>{label}</span>
+            </Link>
           );
         })}
+      </nav>
 
-        {/* Separator + theme toggle */}
-        <div className="w-5 h-px bg-gray-100 my-1" />
+      {/* ── Bottom section ─────────────────────────────────────────────────── */}
+      <div className="flex-shrink-0 px-3 pb-4">
+        <div className="h-px bg-gray-100 mx-1 mb-2" />
 
-        <Tooltip>
-          <TooltipTrigger
-            render={
-              <button
-                onClick={toggle}
-                className="flex items-center justify-center w-10 h-10 rounded-xl transition-all duration-150 text-gray-400 hover:bg-gray-50 hover:text-gray-600"
-              />
-            }
-          >
-            {isDark
-              ? <Sun  size={18} strokeWidth={1.8} />
-              : <Moon size={18} strokeWidth={1.8} />}
-          </TooltipTrigger>
-          <TooltipContent side="right" sideOffset={10}>
-            {isDark ? "Modo claro" : "Modo escuro"}
-          </TooltipContent>
-        </Tooltip>
+        {/* Theme toggle */}
+        <button
+          onClick={toggle}
+          className="w-full flex items-center gap-3 h-10 px-3 rounded-xl text-sm font-medium text-gray-500 hover:bg-gray-50 hover:text-gray-700 transition-all duration-150"
+        >
+          {isDark
+            ? <Sun  size={17} strokeWidth={1.8} />
+            : <Moon size={17} strokeWidth={1.8} />}
+          <span>{isDark ? "Modo claro" : "Modo escuro"}</span>
+        </button>
 
         {/* User section */}
         {user && (
-          <>
-            <div className="w-5 h-px bg-gray-100 my-1" />
-
-            <Tooltip>
-              <TooltipTrigger
-                render={
-                  <div className="flex items-center justify-center w-10 h-10 rounded-xl cursor-default" />
-                }
-              >
-                <div className={cn(
-                  "w-7 h-7 rounded-full flex items-center justify-center text-[10px] font-bold",
-                  roleColor,
-                )}>
-                  {uInitials}
-                </div>
-              </TooltipTrigger>
-              <TooltipContent side="right" sideOffset={10}>
-                <span className="font-semibold">{user.name}</span>
-                <span className="text-gray-400"> · {user.role}</span>
-              </TooltipContent>
-            </Tooltip>
-
-            <Tooltip>
-              <TooltipTrigger
-                render={
-                  <button
-                    onClick={signOut}
-                    className="flex items-center justify-center w-10 h-10 rounded-xl transition-all duration-150 text-gray-300 hover:bg-red-50 hover:text-red-500"
-                  />
-                }
-              >
-                <LogOut size={16} strokeWidth={1.8} />
-              </TooltipTrigger>
-              <TooltipContent side="right" sideOffset={10}>
-                Sair
-              </TooltipContent>
-            </Tooltip>
-          </>
+          <div className="mt-0.5 flex items-center gap-2.5 px-3 py-2.5 rounded-xl">
+            <div
+              className={cn(
+                "w-7 h-7 rounded-full flex items-center justify-center text-[10px] font-bold flex-shrink-0",
+                roleColor,
+              )}
+            >
+              {uInitials}
+            </div>
+            <div className="flex-1 min-w-0">
+              <p className="text-xs font-semibold text-gray-800 truncate leading-tight">
+                {user.name}
+              </p>
+              <p className="text-[10px] text-gray-400 leading-tight">{roleLabel}</p>
+            </div>
+            <button
+              onClick={signOut}
+              className="flex items-center justify-center w-6 h-6 rounded-lg text-gray-300 hover:bg-red-50 hover:text-red-500 transition-all duration-150 flex-shrink-0"
+              title="Sair"
+            >
+              <LogOut size={13} strokeWidth={1.8} />
+            </button>
+          </div>
         )}
-      </nav>
-    </div>
+      </div>
+    </aside>
   );
 }

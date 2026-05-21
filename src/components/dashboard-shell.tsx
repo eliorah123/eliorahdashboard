@@ -72,7 +72,7 @@ function GoalProgress({ monthRevenue, monthLeads, monthSales, goal }: GoalProgre
       label:   "Receita",
       current: monthRevenue,
       target:  goal?.revenue ?? 0,
-      color:   "#5a8977",
+      color:   "linear-gradient(90deg, #1a9e62, #57d49c)",
       fmt:     (v: number) => fmtBRLLong(v),
     },
     {
@@ -99,7 +99,7 @@ function GoalProgress({ monthRevenue, monthLeads, monthSales, goal }: GoalProgre
   return (
     <div
       className="bg-white rounded-2xl border border-gray-100/80 p-5"
-      style={{ boxShadow: "0 1px 3px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.04)" }}
+      style={{ boxShadow: "0 2px 8px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.05)" }}
     >
       <div className="flex items-center justify-between mb-5 flex-wrap gap-3">
         <div>
@@ -137,7 +137,7 @@ function GoalProgress({ monthRevenue, monthLeads, monthSales, goal }: GoalProgre
                   {pct !== null ? `${pct.toFixed(1)}%` : "—"}
                 </span>
               </div>
-              <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
+              <div className="h-2.5 bg-gray-100 rounded-full overflow-hidden">
                 {pct !== null && (
                   <div
                     className="h-full rounded-full transition-all duration-700"

@@ -85,7 +85,7 @@ function SalesContent() {
   return (
     <div className="min-h-screen">
       <FloatingSidebar />
-      <div className="pl-[80px]">
+      <div className="pl-[220px]">
         {/* Page header */}
         <div className="px-8 pt-8 pb-0">
           <h1 className="text-2xl font-bold text-gray-900 tracking-tight">Vendas</h1>

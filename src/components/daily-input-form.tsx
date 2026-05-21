@@ -284,7 +284,7 @@ function RecentEntries({ entries, currentDate, onSelect }: RecentEntriesProps) {
         className="bg-white rounded-2xl border border-gray-100/80 overflow-hidden"
         style={{
           boxShadow:
-            "0 1px 3px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.04)",
+            "0 2px 8px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.05)",
         }}
       >
         {entries.map((entry, i) => {
@@ -405,7 +405,7 @@ function SellerDistribution({ date }: SellerDistributionProps) {
   return (
     <div
       className="mt-4 bg-white rounded-2xl border border-gray-100/80 overflow-hidden"
-      style={{ boxShadow: "0 1px 3px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.04)" }}
+      style={{ boxShadow: "0 2px 8px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.05)" }}
     >
       {/* Toggle header */}
       <button
@@ -658,7 +658,7 @@ export function DailyInputForm() {
         className="bg-white rounded-2xl border border-gray-100/80 p-6"
         style={{
           boxShadow:
-            "0 1px 3px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.04)",
+            "0 2px 8px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.05)",
         }}
       >
         {/* Monetary fields */}
